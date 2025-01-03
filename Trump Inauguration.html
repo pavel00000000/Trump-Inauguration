@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trump Inauguration</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(to bottom, #002868, #ffffff, #bf0a30);
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: 50px auto;
+            border-radius: 10px;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            color: #002868;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 3em;
+            margin-top: 0;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #bf0a30;
+            font-size: 1.8em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        img {
+            width: 300px;
+            height: auto;
+            margin: 20px 0;
+        }
+        .vote-button {
+            background-color: #bf0a30;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        .vote-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .counter {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #002868;
+        }
+        .info {
+            margin-top: 30px;
+            font-size: 1em;
+            color: #002868;
+        }
+        .info a {
+            color: #bf0a30;
+            text-decoration: none;
+        }
+        .info a:hover {
+            text-decoration: underline;
+        }
+        .post-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .post-section h3 {
+            color: #002868;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        .post-section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #333;
+        }
+        .post-section ul {
+            margin-top: 20px;
+            color: #002868;
+            font-size: 1.1em;
+        }
+        .post-section ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trump Inauguration</h1>
+        <h2>Cast your vote - vote with a token</h2>
+        <img src="Trump inauguration2.png" alt="American Flag">
+        <button class="vote-button" onclick="vote()" id="voteButton">Vote Now</button>
+        <div class="counter" id="voteCounter">Votes: 0</div>
+        <div class="info">
+            <p>Token Contract Address: <strong>0x123456789abcdef123456789abcdef1234567890</strong></p>
+           
+        </div>
+    </div>
+
+    <!-- New Post Section -->
+    <div class="post-section">
+        <h3>A Post in Support of the Crypto Community, Its Future, and Trump’s Inauguration</h3>
+        <p><strong>🌐 The Future Belongs to Free Finance! 🌐</strong></p>
+        <p>The world is on the brink of global change. Cryptocurrencies are becoming the new financial reality, a symbol of freedom and independence from traditional systems. It’s more than just assets — it’s a movement for economic independence and control over personal funds.</p>
+        <p><strong>🔥 The Crypto Community Is Ready to Embrace the Future!</strong></p>
+        <p>The world is seeking leaders who believe in the power of decentralization, innovation, and freedom. Political events can serve as a catalyst for the mass adoption of cryptocurrencies worldwide. Ahead of us lies a new era filled with opportunities and challenges that we will overcome together.</p>
+        <p><strong>💡 What’s Next?</strong></p>
+        <ul>
+            <li>Strengthening the position of blockchain technologies.</li>
+            <li>Recognition of cryptocurrencies on a national level.</li>
+            <li>New opportunities for investors and users.</li>
+        </ul>
+        <p><strong>🇺🇸 If Trump returns to the White House, it could boost the development of the crypto market in the U.S.</strong> His policies promoting free enterprise and independent finances could play a crucial role in the mass adoption of crypto assets.</p>
+        <p><strong>🤝 We, crypto enthusiasts, are the future of a free economy!</strong><br>Let’s move forward, support each other, and continue building a new world based on decentralization and financial freedom.</p>
+        <p><strong>💬 What’s your vision for the future of cryptocurrencies? Share your thoughts in the comments!</strong></p>
+        <p>#CryptoFuture #FinancialFreedom #Trump2025 #Decentralization</p>
+    </div>
+
+    <script>
+        // Load votes from local storage
+        let votes = localStorage.getItem('votes') ? parseInt(localStorage.getItem('votes')) : 0;
+        let hasVoted = localStorage.getItem('hasVoted') === 'true';
+
+        // Update the counter on page load
+        document.getElementById('voteCounter').innerText = `Votes: ${votes}`;
+        document.getElementById('voteButton').disabled = hasVoted;
+
+        function vote() {
+            if (!hasVoted) {
+                votes++;
+                document.getElementById('voteCounter').innerText = `Votes: ${votes}`;
+                document.getElementById('voteButton').disabled = true;
+                hasVoted = true;
+
+                // Save to local storage
+                localStorage.setItem('votes', votes);
+                localStorage.setItem('hasVoted', 'true');
+            }
+        }
+    </script>
+</body>
+</html>
